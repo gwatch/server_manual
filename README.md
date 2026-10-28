@@ -5,6 +5,7 @@
 **Для группы Центра ИИ в химии (aichem)**
 
 Чтобы получить доступ к серверу, вам необходимо сначала согласовать это с вашим гайдом.
+⚠️ ВАЖНО: При отсутствии активности на кластере в течение года, Ваш аккаунт и данные удаляются.
 
 После того, как вы получите согласие от гайда, вы отправляете одному из ответственных (**Юлия Разливина, Ася Орлова**):
 - подтверждение, что ваш гайд в курсе и согласовал пользование сервером,
@@ -89,7 +90,7 @@ Enter passphrase (empty for no passphrase):
 
 💡 Как подключиться? 
    - Введите:
-     - в поле `Имя хоста` - aicltr.itmo.ru
+     - в поле `Имя хоста` - 77.234.216.102
      - в поле `Имя пользователя` - ваш логин
    - Нажмите "Еще" и перейдите в раздел Аутентификация.
    - В поле "Файл закрытого ключа" установите путь к приватному ключу. Подтвердите конвертацию формата в Putty, если возникает данный вопрос. Нажмите "Ок".
@@ -101,7 +102,7 @@ Enter passphrase (empty for no passphrase):
 💡 Есть и терминал, и файловый менеджер.
 
 💡 Как подключиться? 
-   - Session → SSH → Remote host - ввести aicltr.itmo.ru
+   - Session → SSH → Remote host - ввести 77.234.216.102
    - Username - ваш логин
    - Перейдите на вкладку Дополнительные параметры SSH (или "Advanced SSH settings").
    - Найдите поле для указания пути к вашему ключу и укажите путь к нему.
@@ -113,21 +114,23 @@ Enter passphrase (empty for no passphrase):
 
 ## 4. О кластере 🖥️
 
+На кластере есть сервер контроллер SLURM (77.234.216.102), он является точкой входа. 
+
 На кластере есть две вычислительные ноды:
 
 - **Сервер aichem **  
-  6 × GPU A6000, 256 ядер, AMD EPYC 7763 (64-Core), 512 GB RAM  
+  7 × GPU A6000, 256 ядер, AMD EPYC 7763 (64-Core), 512 GB RAM  
 
 - **Сервер aihub **  
   6 × GPU A6000, 256 ядер, AMD EPYC 7763 (64-Core), 512 GB RAM  
 
 ⚠️ **Студенты и сотрудники Центра ИИ в химии должны пользоваться только очередью `aichem`**
 
-⚠️ **Студенты и сотрудники  должны пользоваться только очередью `aihub`**
+⚠️ **Студенты и сотрудники ПИШ должны пользоваться только очередью `aihub`**
 
 ### Файловая система
 
-- Домашние директории: `/nfs/home/<user>/`теперь является ссылкой на `/mnt/tank/scratch/<user>/`
+- Домашние директории: `/nfs/home/<user>/`- теперь является ссылкой на `/mnt/tank/scratch/<user>/`
 - Рабочие директории: `/mnt/tank/scratch/<user>/`
 - Суммарная квоты дискового пространства **250GB** 
 
@@ -140,15 +143,11 @@ Enter passphrase (empty for no passphrase):
 Для установки Anaconda нужно перейти в свою домашнюю директорию и выполнить там по очереди команды:
 
 ```bash
-wget https://repo.anaconda.com/archive/Anaconda3-2024.02-1-Linux-x86_64.sh
+wget https://repo.anaconda.com/archive/Miniconda3-latest-Linux-x86_64.sh
 bash Anaconda3-2024.02-1-Linux-x86_64.sh
 source ~/anaconda3/bin/activate
 echo ". ~/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 source ~/.bashrc
-```
-или 
-
-``` wget -qO /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && \ bash /tmp/miniconda.sh -b -p "$HOME/miniconda3" &&\  source "$HOME/miniconda3/etc/profile.d/conda.sh" && \ conda activate base && \ rm /tmp/miniconda.sh
 ```
 
 ### Создание и активация окружения
