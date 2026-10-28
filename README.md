@@ -152,6 +152,10 @@ source ~/anaconda3/bin/activate
 echo ". ~/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 source ~/.bashrc
 ```
+или 
+
+```wget -qO /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash /tmp/miniconda.sh -b -p "$HOME/miniconda3" && source "$HOME/miniconda3/etc/profile.d/conda.sh" && conda activate base && rm /tmp/miniconda.sh
+```
 
 ### Создание и активация окружения
 
