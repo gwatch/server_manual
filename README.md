@@ -127,15 +127,9 @@ Enter passphrase (empty for no passphrase):
 
 ### Файловая система
 
-- Домашние директории: `/nfs/home/<user>/` 
+- Домашние директории: `/nfs/home/<user>/`теперь является ссылкой на `/mnt/tank/scratch/<user>/`
 - Рабочие директории: `/mnt/tank/scratch/<user>/`
 - Суммарная квоты дискового пространства **250GB** 
-
-Обычно:
-- Домашняя директория → для установки `conda` и окружений  
-- Рабочая директория → для хранения папок проектов, скриптов, данных и т.п.
-
-Если вы планируете работать с большим кол-вом окружений, вы можете сразу установить `conda` в рабочую директорию, т.к. в домашней директории гораздо меньше места.
 
 ---
 
@@ -151,6 +145,7 @@ bash Anaconda3-2024.02-1-Linux-x86_64.sh
 source ~/anaconda3/bin/activate
 echo ". ~/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 source ~/.bashrc
+wget -qO /tmp/miniconda.sh https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh && bash /tmp/miniconda.sh -b -p "$HOME/miniconda3" && source "$HOME/miniconda3/etc/profile.d/conda.sh" && conda activate base && rm /tmp/miniconda.sh
 ```
 или 
 
